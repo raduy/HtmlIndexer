@@ -10,6 +10,8 @@ import pl.edu.agh.ki.bd.htmlIndexer.command.PrintProcessedUrlsTableCommand;
 import pl.edu.agh.ki.bd.htmlIndexer.model.Sentence;
 import pl.edu.agh.ki.bd.htmlIndexer.persistence.HibernateUtils;
 
+import static java.lang.String.*;
+
 public class HtmlIndexerApp {
 
     public static void main(String[] args) throws IOException {
@@ -45,7 +47,7 @@ public class HtmlIndexerApp {
                 }
             } else if (cmd.startsWith("f ")) {
                 for (Sentence sentence : indexer.findSentencesByWords(cmd.substring(2))) {
-                    System.out.println(String.format("Found in sentence: %s.\n\t In url: %s", sentence, sentence.getProcessedUrl()));
+                    System.out.println(format("Found in sentence: %s.\n\t In url: %s", sentence.getContent(), sentence.getProcessedUrl()));
                 }
             } else if (cmd.startsWith("l ")) {
                 for (String sentence : indexer.findSentencesByLength(Integer.valueOf(cmd.substring(2)))) {

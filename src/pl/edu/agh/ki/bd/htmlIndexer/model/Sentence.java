@@ -1,14 +1,16 @@
 package pl.edu.agh.ki.bd.htmlIndexer.model;
 
 
+import java.util.Set;
+
 public class Sentence {
 
     private long sentenceId;
     private String content;
     private ProcessedUrl processedUrl;
+    private Set<Word> words;
 
     public Sentence() {
-
     }
 
     public Sentence(String content, ProcessedUrl processedUrl) {
@@ -38,6 +40,14 @@ public class Sentence {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public Set<Word> getWords() {
+        return words;
+    }
+
+    public void setWords(Set<Word> words) {
+        this.words = words;
     }
 
     @Override

@@ -28,6 +28,21 @@
             <column name="processedUrlId" not-null="true"/>
         </many-to-one>
 
+        <set name="words" table="Word_Sentence"
+             inverse="false" lazy="true" fetch="select" cascade="all">
+            <key column="sentenceId" />
+            <many-to-many column="content" class="Word" />
+        </set>
+    </class>
+
+    <class name="Word">
+        <id name="content">
+        </id>
+        <set name="sentenceSet" table="Word_Sentence"
+             inverse="true" lazy="true" fetch="select">
+            <key column="content" />
+            <many-to-many column="sentenceId" class="Sentence" />
+        </set>
     </class>
 
 </hibernate-mapping>
