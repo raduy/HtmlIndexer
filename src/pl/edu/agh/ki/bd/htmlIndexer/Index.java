@@ -1,6 +1,7 @@
 package pl.edu.agh.ki.bd.htmlIndexer;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -48,7 +49,7 @@ public class Index {
         Transaction transaction = session.beginTransaction();
 
         String query = "%" + words.replace(" ", "%") + "%";
-        List<Sentence> result = session.createQuery("select s from Sentence s where s.content like :query").setParameter("query", query).list();
+        List<Sentence> result = Collections.checkedList(session.createQuery("select s from Sentence s where s.content like :query").setParameter("query", query).list(), Sentence.class);
 
         transaction.commit();
         session.close();

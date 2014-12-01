@@ -45,4 +45,12 @@ public class ProcessedUrl {
     public void setSentences(List<Sentence> sentences) {
         this.sentences = sentences;
     }
+
+    @Override
+    public String toString() {
+        return "ProcessedUrl{" +
+                "url='" + url + '\'' +
+                ", date=" + date +
+                '}';
+    }
 }
