@@ -19,7 +19,7 @@ public class PrintProcessedUrlsTableCommand implements ICommand {
         Session session = HibernateUtils.getSession();
         Transaction transaction = session.beginTransaction();
 
-        String SQL_QUERY = "SELECT sentence.processedUrl.url, COUNT(*) FROM Sentence sentence GROUP BY sentence.processedUrl";
+        String SQL_QUERY = "SELECT sentence.processedUrl.url, COUNT(*) FROM Sentence sentence GROUP BY sentence.processedUrl ORDER BY sentence.processedUrl.sentences.size desc";
         Query query = session.createQuery(SQL_QUERY);
 
         prettyPrintTable(query);
