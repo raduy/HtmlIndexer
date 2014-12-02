@@ -14,6 +14,10 @@ public class ProcessedUrl {
     public ProcessedUrl() {
     }
 
+    public ProcessedUrl(String url) {
+        this.url = url;
+    }
+
     public long getProcessedUrlId() {
         return processedUrlId;
     }

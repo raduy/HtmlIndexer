@@ -32,14 +32,13 @@ public class Index {
                 for (String sentenceContent : element.ownText().split("\\. ")) {
 
                     Sentence sentence = new Sentence(sentenceContent, processedUrl);
+                    sentence.splitContentToWords();
                     processedUrl.getSentences().add(sentence);
 
+                    session.persist(sentence);
                 }
             }
         }
-        System.out.println(processedUrl);
-        session.persist(processedUrl);
-
         transaction.commit();
         session.close();
     }

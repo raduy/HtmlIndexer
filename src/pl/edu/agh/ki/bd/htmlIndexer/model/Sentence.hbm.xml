@@ -24,12 +24,12 @@
             <generator class="native"/>
         </id>
         <property name="content" type="text"/>
-        <many-to-one name="processedUrl" class="ProcessedUrl" lazy="false">
+        <many-to-one name="processedUrl" class="ProcessedUrl" lazy="false" cascade="all">
             <column name="processedUrlId" not-null="true"/>
         </many-to-one>
 
         <set name="words" table="Word_Sentence"
-             inverse="false" lazy="true" fetch="select" cascade="all">
+             inverse="false" fetch="select" cascade="all">
             <key column="sentenceId" />
             <many-to-many column="content" class="Word" />
         </set>
@@ -39,7 +39,7 @@
         <id name="content">
         </id>
         <set name="sentenceSet" table="Word_Sentence"
-             inverse="true" lazy="true" fetch="select">
+             inverse="true" lazy="true" fetch="select" cascade="all">
             <key column="content" />
             <many-to-many column="sentenceId" class="Sentence" />
         </set>

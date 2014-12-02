@@ -1,6 +1,7 @@
 package pl.edu.agh.ki.bd.htmlIndexer.model;
 
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class Sentence {
@@ -8,7 +9,7 @@ public class Sentence {
     private long sentenceId;
     private String content;
     private ProcessedUrl processedUrl;
-    private Set<Word> words;
+    private Set<Word> words = new HashSet<>();
 
     public Sentence() {
     }
@@ -48,6 +49,14 @@ public class Sentence {
 
     public void setWords(Set<Word> words) {
         this.words = words;
+    }
+
+    public void splitContentToWords() {
+        String[] split = this.content.split("[ ]+");
+        for (String word : split) {
+            System.out.println(content + " " + word);
+            this.words.add(Word.of(word));
+        }
     }
 
     @Override

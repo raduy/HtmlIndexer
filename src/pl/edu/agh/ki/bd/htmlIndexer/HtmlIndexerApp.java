@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.util.Date;
 
 import pl.edu.agh.ki.bd.htmlIndexer.command.ICommand;
+import pl.edu.agh.ki.bd.htmlIndexer.command.IndexWebPageCommand;
 import pl.edu.agh.ki.bd.htmlIndexer.command.PrintProcessedUrlsTableCommand;
 import pl.edu.agh.ki.bd.htmlIndexer.model.Sentence;
 import pl.edu.agh.ki.bd.htmlIndexer.persistence.HibernateUtils;
@@ -36,15 +37,10 @@ public class HtmlIndexerApp {
                 HibernateUtils.shutdown();
                 break;
             } else if (cmd.startsWith("i ")) {
-                for (String url : cmd.substring(2).split(" ")) {
-                    try {
-                        indexer.indexWebPage(url);
-                        System.out.println("Indexed: " + url);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                        System.out.println("Error indexing: " + e.getMessage());
-                    }
-                }
+                cmd = "i http://google.com";
+                ICommand command = new IndexWebPageCommand(cmd);
+                command.execute();
+
             } else if (cmd.startsWith("f ")) {
                 for (Sentence sentence : indexer.findSentencesByWords(cmd.substring(2))) {
                     System.out.println(format("Found in sentence: %s.\n\t In url: %s", sentence.getContent(), sentence.getProcessedUrl()));
