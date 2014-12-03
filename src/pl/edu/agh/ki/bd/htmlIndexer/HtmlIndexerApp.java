@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Date;
 
+import pl.edu.agh.ki.bd.htmlIndexer.command.FindWordInIndexCommand;
 import pl.edu.agh.ki.bd.htmlIndexer.command.ICommand;
 import pl.edu.agh.ki.bd.htmlIndexer.command.IndexWebPageCommand;
 import pl.edu.agh.ki.bd.htmlIndexer.command.PrintProcessedUrlsTableCommand;
@@ -42,9 +43,9 @@ public class HtmlIndexerApp {
                 command.execute();
 
             } else if (cmd.startsWith("f ")) {
-                for (Sentence sentence : indexer.findSentencesByWords(cmd.substring(2))) {
-                    System.out.println(format("Found in sentence: %s.\n\t In url: %s", sentence.getContent(), sentence.getProcessedUrl()));
-                }
+                ICommand command = new FindWordInIndexCommand(cmd);
+                command.execute();
+
             } else if (cmd.startsWith("l ")) {
                 for (String sentence : indexer.findSentencesByLength(Integer.valueOf(cmd.substring(2)))) {
                     System.out.println("Found in sentence: " + sentence);
