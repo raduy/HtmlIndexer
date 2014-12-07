@@ -17,9 +17,15 @@ public class IndexWebPageCommand implements ICommand {
     public void execute() {
 
         Index indexer = new Index();
-        for (String url : cmd.substring(2).split(" ")) {
+        String[] urls = cmd.substring(2).split(" ");
+
+        if (urls.length == 0) {
+            urls = new String[]{"http://google.com"};
+        }
+
+        for (String url : urls) {
             try {
-                indexer.indexWebPage(url);
+                indexer.indexWebPage(url.trim());
                 System.out.println("Indexed: " + url);
             } catch (Exception e) {
                 e.printStackTrace();

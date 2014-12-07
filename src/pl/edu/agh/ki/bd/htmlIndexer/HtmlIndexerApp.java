@@ -1,18 +1,11 @@
 package pl.edu.agh.ki.bd.htmlIndexer;
 
+import pl.edu.agh.ki.bd.htmlIndexer.command.*;
+import pl.edu.agh.ki.bd.htmlIndexer.persistence.HibernateUtils;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Date;
-
-import pl.edu.agh.ki.bd.htmlIndexer.command.FindWordInIndexCommand;
-import pl.edu.agh.ki.bd.htmlIndexer.command.ICommand;
-import pl.edu.agh.ki.bd.htmlIndexer.command.IndexWebPageCommand;
-import pl.edu.agh.ki.bd.htmlIndexer.command.PrintProcessedUrlsTableCommand;
-import pl.edu.agh.ki.bd.htmlIndexer.model.Sentence;
-import pl.edu.agh.ki.bd.htmlIndexer.persistence.HibernateUtils;
-
-import static java.lang.String.*;
 
 public class HtmlIndexerApp {
 
@@ -25,7 +18,7 @@ public class HtmlIndexerApp {
         while (true) {
             System.out.println("HtmlIndexer [? for help] > : ");
             String cmd = bufferedReader.readLine();
-            long startAt = new Date().getTime();
+            long startAt = System.nanoTime();
 
             if (cmd.startsWith("?")) {
                 System.out.println("'?'      	- print this help");
@@ -33,12 +26,13 @@ public class HtmlIndexerApp {
                 System.out.println("'i URLs'  	- index URLs, space separated");
                 System.out.println("'f WORDS'	- find sentences containing all WORDs, space separated");
                 System.out.println("'l <limit>  - find sentences with size at least limit'");
+                System.out.println("'c          - count word occurrences in word index'");
+                System.out.println("'t          - draw indexed urls table'");
             } else if (cmd.startsWith("x")) {
                 System.out.println("HtmlIndexer terminated.");
                 HibernateUtils.shutdown();
                 break;
             } else if (cmd.startsWith("i ")) {
-                cmd = "i http://google.com";
                 ICommand command = new IndexWebPageCommand(cmd);
                 command.execute();
 
@@ -53,11 +47,14 @@ public class HtmlIndexerApp {
             } else if (cmd.startsWith("t")) {
                 ICommand command = new PrintProcessedUrlsTableCommand();
                 command.execute();
+            } else if (cmd.startsWith("c")) {
+                ICommand command = new CountWordsOccurrencesInIndexCommand(cmd);
+                command.execute();
             } else if (cmd.trim().equals("")) {
                 continue;
             }
 
-            System.out.println("took " + (new Date().getTime() - startAt) + " ms");
+            System.out.println("took " + ((System.nanoTime() - startAt) / 1000000 + " ms"));
 
         }
     }
