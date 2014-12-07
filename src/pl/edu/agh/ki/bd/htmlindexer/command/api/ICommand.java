@@ -1,4 +1,4 @@
-package pl.edu.agh.ki.bd.htmlIndexer.command;
+package pl.edu.agh.ki.bd.htmlindexer.command.api;
 
 /**
  * Created by raduy on 01.12.14.

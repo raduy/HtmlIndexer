@@ -1,4 +1,4 @@
-package pl.edu.agh.ki.bd.htmlIndexer.model;
+package pl.edu.agh.ki.bd.htmlindexer.model;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -42,14 +42,14 @@ public class Word {
 
         Word word = (Word) o;
 
-        if (!content.equals(word.content)) return false;
+        if (!content.equalsIgnoreCase(word.content)) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        return content.hashCode();
+        return content.toLowerCase().hashCode();
     }
 
     @Override

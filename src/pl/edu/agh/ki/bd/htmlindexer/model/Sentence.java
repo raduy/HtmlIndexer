@@ -1,4 +1,4 @@
-package pl.edu.agh.ki.bd.htmlIndexer.model;
+package pl.edu.agh.ki.bd.htmlindexer.model;
 
 
 import java.util.HashSet;
@@ -52,9 +52,11 @@ public class Sentence {
     }
 
     public void splitContentToWords() {
-        String[] split = this.content.split("[ ]+");
+        String[] split = this.content.split("\\s+");
         for (String word : split) {
-            System.out.println(content + " " + word);
+            if ("optimization".equals(word)) {
+                System.out.println("kuj");
+            }
             this.words.add(Word.of(word));
         }
     }

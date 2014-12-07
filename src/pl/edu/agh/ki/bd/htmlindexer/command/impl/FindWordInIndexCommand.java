@@ -1,10 +1,11 @@
-package pl.edu.agh.ki.bd.htmlIndexer.command;
+package pl.edu.agh.ki.bd.htmlindexer.command.impl;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import pl.edu.agh.ki.bd.htmlIndexer.model.Sentence;
-import pl.edu.agh.ki.bd.htmlIndexer.model.Word;
-import pl.edu.agh.ki.bd.htmlIndexer.persistence.HibernateUtils;
+import pl.edu.agh.ki.bd.htmlindexer.command.api.ICommand;
+import pl.edu.agh.ki.bd.htmlindexer.model.Sentence;
+import pl.edu.agh.ki.bd.htmlindexer.model.Word;
+import pl.edu.agh.ki.bd.htmlindexer.persistence.HibernateUtils;
 
 import java.util.HashSet;
 import java.util.List;

@@ -1,4 +1,4 @@
-package pl.edu.agh.ki.bd.htmlIndexer.persistence;
+package pl.edu.agh.ki.bd.htmlindexer.persistence;
 
 import java.io.File;
 

@@ -1,6 +1,6 @@
-package pl.edu.agh.ki.bd.htmlIndexer.command;
+package pl.edu.agh.ki.bd.htmlindexer.command.impl;
 
-import pl.edu.agh.ki.bd.htmlIndexer.Index;
+import pl.edu.agh.ki.bd.htmlindexer.command.api.ICommand;
 
 /**
  * Created by raduy on 02.12.14.
@@ -17,9 +17,9 @@ public class IndexWebPageCommand implements ICommand {
     public void execute() {
 
         Index indexer = new Index();
-        String[] urls = cmd.substring(2).split(" ");
+        String[] urls = cmd.substring(2).trim().split(" ");
 
-        if (urls.length == 0) {
+        if (urls[0].isEmpty()) {
             urls = new String[]{"http://google.com"};
         }
 

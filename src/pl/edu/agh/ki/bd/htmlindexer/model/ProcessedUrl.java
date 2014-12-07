@@ -1,4 +1,4 @@
-package pl.edu.agh.ki.bd.htmlIndexer.model;
+package pl.edu.agh.ki.bd.htmlindexer.model;
 
 import java.util.*;
 
