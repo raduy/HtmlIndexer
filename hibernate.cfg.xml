@@ -15,7 +15,7 @@
 		<property name="show_sql">false</property>
 		
 		<!-- Drop and re-create the database schema at startup -->
-		<property name="hbm2ddl.auto">create-drop</property>
+		<property name="hbm2ddl.auto">validate</property>
 		
 		<!-- Mappings -->
 		<mapping resource="pl/edu/agh/ki/bd/htmlindexer/persistence/Sentence.hbm.xml" />

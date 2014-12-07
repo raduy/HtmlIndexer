@@ -43,6 +43,9 @@ public class HtmlIndexerApp {
             } else if (cmd.startsWith("c")) {
                 command = new CountWordsOccurrencesInIndexCommand(cmd);
                 command.execute();
+            } else if (cmd.startsWith("q")) {
+                command = new CriteriaQueryShowcaseCommand();
+                command.execute();
             } else if (cmd.trim().equals("")) {
                 continue;
             }

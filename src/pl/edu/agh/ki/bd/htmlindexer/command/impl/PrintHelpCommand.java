@@ -15,6 +15,6 @@ public class PrintHelpCommand implements ICommand {
         System.out.println("'l <limit>  - find sentences with size at least limit'");
         System.out.println("'c          - count word occurrences in word index'");
         System.out.println("'t          - draw indexed urls table'");
-
+        System.out.println("'q          - list all indexed sentences and url in which they were found'");
     }
 }
