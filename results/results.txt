@@ -1,0 +1,31 @@
+1. ---- Porownanie czasu dzialania indeksacji w przypadku wszystkich zdan w jednej transakcji
+ oraz w przypadku oddzielnej transakcji na zdanie----
+
+Przypadek z jedna transakcja okazal sie zdecydowanie szybszy dla przykladowej strony z konspektu.
+Czasy wyniosly odpowiednio: 6.8s oraz 11.2s.
+
+2. ---- Porownanie wydajnosci przy uzyciu silnika MySql i HyperSql: ----
+
+W celu porownania wydajnosci przeprowadzilem testy dla stron z mala, srednia i duza zawartoscia
+tekstu na stronie. Kazde indeksowanie zostalo przeprowadzone 5 razy.
+
+Usrednione wyniki pokazuje tabela:
+
+            | HSQLDB    | MYSQL     |
+-------------------------------------
+GOOGLE.COM  | 740ms     | 771ms     |
+ONET.PL     | 1093ms    | 1379ms    |
+WP.PL       | 1923ms    | 2923ms    |
+
+    Na podstawie tabeli widac ze lepsze czasy uzyskujemy dla silnika HSQLDB, dlatego ze jest on baza typu
+in-memory wiec mamy szybszy dostep do danych zawartych w bazie danych.
+
+    Zbadane zostaly takze czasy odczytu po zaindeksowaniu 3 powyzszych stron.
+Jednak wyniki zbytnio sie nie roznily pomiedzy silnikami MySql i HSQLDB.
+Dla proby poszukiwania danego slowa czas wyniosł 441ms dla MySql i 398ms dla HSQLDB.
+
+3. ---- Zadanie dodatkowe ----
+Jako zadanie dodatkowe uzylem mechanizmu Criteria API Hibernate. Kod zawarty jest w klasie
+CriteriaQueryShowcaseCommand.
+
+Łukasz Raduj, Sroda 8.00

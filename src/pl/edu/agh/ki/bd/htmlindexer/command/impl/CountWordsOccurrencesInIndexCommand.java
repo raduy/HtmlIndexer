@@ -11,10 +11,7 @@ import pl.edu.agh.ki.bd.htmlindexer.persistence.HibernateUtils;
  */
 public class CountWordsOccurrencesInIndexCommand implements ICommand {
 
-    private final String cmd;
-
-    public CountWordsOccurrencesInIndexCommand(String cmd) {
-        this.cmd = cmd;
+    public CountWordsOccurrencesInIndexCommand() {
     }
 
     @Override
@@ -27,12 +24,8 @@ public class CountWordsOccurrencesInIndexCommand implements ICommand {
 
         for (Object object : query.list()) {
             Object[] tuple = (Object[]) object;
-
             System.out.println(tuple[0] + " " + tuple[1]);
-
         }
-
-        System.out.println(query.list());
 
         transaction.commit();
         session.close();

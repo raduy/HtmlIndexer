@@ -41,7 +41,7 @@ public class HtmlIndexerApp {
                 command = new PrintProcessedUrlsTableCommand();
                 command.execute();
             } else if (cmd.startsWith("c")) {
-                command = new CountWordsOccurrencesInIndexCommand(cmd);
+                command = new CountWordsOccurrencesInIndexCommand();
                 command.execute();
             } else if (cmd.startsWith("q")) {
                 command = new CriteriaQueryShowcaseCommand();
